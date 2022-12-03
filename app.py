@@ -7,7 +7,7 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 @app.route("/build")
-def hello_world():
+def build():
     return "<p>Updated flask app for testing Github actions workflow</p>"
 
 
