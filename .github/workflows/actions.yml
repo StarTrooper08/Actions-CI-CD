@@ -1,0 +1,24 @@
+name: Build Docker Image using Github Actions
+
+on:
+  push:
+      branches: ['master']
+
+jobs:
+   build:
+      runs-on: ubuntu-latest
+      
+      steps:
+        - uses: actions/checkout@v3
+        
+        - name: Log in to Docker Hub
+          uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+          with:
+              username: ${{ secrets.DOCKER_USER }}
+              password: ${{ secrets.DOCKER_PASS }}
+              
+        - name: Build Docker Image
+          run: docker build --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/flask-actions-cicd
+          
+        - name: Docker Push
+          run: docker push ${secrets.DOCKER_USER }}/flask-actions-cicd
