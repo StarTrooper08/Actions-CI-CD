@@ -6,9 +6,10 @@ app = Flask(__name__)
 def hello_world():
     return "<p>Hello, World!</p>"
 
+
 @app.route("/build")
-def build():
-    return "<p>Updated flask app for testing Github actions workflow</p>"
+def docker():
+    return "<p>Testing Github Actions for building Docker image</p>"
 
 
 if __name__ == "__main__":
